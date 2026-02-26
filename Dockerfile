@@ -1,12 +1,12 @@
-FROM openjdk:21-slim
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-COPY GraphDFSServer.java /app/
+COPY GraphDFSServer.java .
 
-RUN javac -d . GraphDFSServer.java
+RUN javac GraphDFSServer.java
 
-ENV PORT 8080
+ENV PORT=8080
 EXPOSE 8080
 
-CMD ["java", "-cp", ".", "GraphDFSServer"]
+CMD ["sh", "-c", "java GraphDFSServer"]
